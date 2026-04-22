@@ -1,0 +1,44 @@
+===========================================================
+PROJECT: CORE NEXUS - EAI INTEGRATION
+===========================================================
+TEAM: MENTALITY
+1. Muhammad Ghazali - [102062400101]
+2. Novaldo Aulia Rahman - [102062400133]
+3. Muhammad Rafli Firman Riandra - [102062400143]
+===========================================================
+
+DAFTAR SERVICE & ENDPOINT:
+
+1. SERVICE A (Laravel 13 - Consumer)
+   - URL: http://localhost:8000
+   - Role: Main UI, Database Management (MySQL), & Orchestrator.
+   - DB Name: db_nexus_players
+
+2. SERVICE B (CodeIgniter 4 - Provider)
+   - URL: http://localhost:9000 (sesuai port kamu)
+   - Role: Statistik Performa (Flat-file) & Global Audit Trail.
+   - API History: /api/match-history/{id} (GET)
+   - API Update : /api/add-win/{id}?type=win (POST)
+   - API Audit  : /api/global-logs/fetch (GET)
+
+CARA MENJALANKAN SISTEM:
+
+1. Persiapan Database:
+   - Pastikan MySQL aktif (XAMPP).
+   - Buat database: db_nexus_players.
+   - Jalankan 'php artisan migrate' pada folder Service A.
+
+2. Menjalankan Server:
+   - Folder Laravel : php artisan serve
+   - Folder CI4     : php spark serve --port=9000
+
+3. Testing Integrasi:
+   - Akses Dashboard Laravel.
+   - Tambah/Hapus pemain dan cek sinkronisasi pada:
+     a. Database MySQL.
+     b. Folder 'writable' di CI4 (wins_player_{id}.txt).
+     c. File 'system_audit.log' di CI4.
+
+===========================================================
+"MENTALITY"
+===========================================================
